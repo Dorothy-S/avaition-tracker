@@ -3,7 +3,7 @@ Flight Plan Assistant
 A simple but practical tool for pilots to calculate flight basics
 """
 
-# Simple aircraft database
+# aircraft database
 aircraft_db = {
     "C172": {
         "name": "Cessna 172",
@@ -29,7 +29,7 @@ aircraft_db = {
 }
 
 def calculate_flight_time(distance, speed, headwind=0):
-    """Calculate how long a flight will take"""
+    """Calculates how long a flight will take"""
     actual_speed = speed - headwind
     if actual_speed <= 0:
         return "Error: Headwind too strong!"
@@ -50,9 +50,9 @@ def check_fuel_sufficiency(aircraft, fuel_needed):
     max_fuel = aircraft["max_fuel"]
     
     if fuel_needed <= max_fuel:
-        return f"✅ Fuel OK: {fuel_needed:.1f} gal needed, {max_fuel} gal capacity"
+        return f"Fuel OK: {fuel_needed:.1f} gal needed, {max_fuel} gal capacity"
     else:
-        return f"❌ Fuel warning: {fuel_needed:.1f} gal needed, but only {max_fuel} gal capacity"
+        return f"Fuel warning: {fuel_needed:.1f} gal needed, but only {max_fuel} gal capacity"
 
 def calculate_cost(fuel_needed, fuel_price=6.50):
     """Calculate the fuel cost for the flight"""
@@ -62,7 +62,7 @@ def display_flight_plan():
     """Main function to run the flight planner"""
     print("=== Flight Plan Assistant ===\n")
     
-    # Let user choose aircraft
+    # User choose aircraft
     print("Available Aircraft:")
     for code, plane in aircraft_db.items():
         print(f"  {code}: {plane['name']}")
@@ -76,7 +76,7 @@ def display_flight_plan():
     aircraft = aircraft_db[choice]
     print(f"\nSelected: {aircraft['name']}")
     
-    # Get flight details
+    # Gets flight details
     try:
         distance = float(input("Enter distance (nautical miles): "))
         headwind = float(input("Enter headwind (knots, 0 if none): "))
@@ -113,11 +113,11 @@ def display_flight_plan():
     
     # Add some basic weather consideration
     if headwind > 20:
-        print("\n⚠️  Strong headwind - consider delaying if possible")
+        print("\nStrong headwind - consider delaying if possible")
     elif headwind < -10:
-        print("\n✅ Favorable tailwind - good flying conditions!")
+        print("\nFavorable tailwind - good flying conditions!")
     else:
-        print("\n🌤️  Normal wind conditions")
+        print("\nNormal wind conditions")
 
 def aircraft_comparison():
     """Compare different aircraft for the same trip"""
@@ -174,6 +174,5 @@ def main_menu():
         else:
             print("Please choose 1-4")
 
-# Run the program
 if __name__ == "__main__":
     main_menu()
